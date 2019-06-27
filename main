@@ -1,0 +1,51 @@
+using System;
+
+
+class Test{
+	
+	public static double Cyrcle(double radius){//площадь круга
+		return 3.14159265 * Math.Pow(radius,2);	
+}
+	
+	public static double Triangle(double first, double second, double third){//площадь треугольника
+		double p = (first + second + third) /2;
+		double s = Math.Sqrt((p - first) * (p - second) * (p - third));
+		if(s== (first*second)/2)//является ли треугольник прямоугольным
+			Console.WriteLine("Triangle is rectangular\n");
+		return s;	
+}
+
+
+	
+	static int Main(){
+		int Message = 1;
+		int[] sizes = new int[100];
+		int i=0;
+		
+		Console.WriteLine("Enter sizes of your figure\n To stop whrite 0\n");
+		Message = Convert.ToInt32(Console.ReadLine());
+		while(Message!= 0){//пока пользователь не введет 0, будем считывать длины сторон фигуры
+			sizes[i] = Message;
+			i++;
+		}
+		switch (i) {//i-количество введенных сторон, в зависимости от этого будут реализованы разные сценарии
+			case 0:
+				Console.WriteLine("You have to white anything\n");
+				break;
+			case 1:
+				Console.WriteLine(Cyrcle(sizes[0]));
+				break;
+			case 2:
+				Console.WriteLine("Unsolvable case\n");
+				break;
+			case 3:
+				Console.WriteLine(Triangle(sizes[0],sizes[3],sizes[2]));
+				break;
+			default:
+			Console.WriteLine("Too large dimension\n");
+				break;
+				
+		}
+		return 0;
+	}
+}
